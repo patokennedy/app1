@@ -7,3 +7,12 @@ ion-content{
 ion-item{
     --padding-bottom: 10px;
 }
+ion-content {
+
+    --background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(240, 240, 240, 0.914)),
+    
+    url("https://img.freepik.com/vector-gratis/fondo-azul-galaxia_125540-99.jpg?w=2000")
+    
+    no-repeat center center / cover;
+    
+    }
