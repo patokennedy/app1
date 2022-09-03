@@ -1,6 +1,7 @@
 export class Usuario {
   public nombreUsuario = '';
   public password = '';
+  public nombrePersona= "";
 
   public validarNombreUsuario(): string {
     if (this.nombreUsuario.trim() === '') {
@@ -31,4 +32,26 @@ export class Usuario {
     return this.validarNombreUsuario()
       || this.validarPassword();
   }
+  public getUsuarios(): Usuario[] {
+    const usuarios = [];
+    usuarios.push({ nombreUsuario: 'atorresl@duocuc.cl', password: '1234', nombrePersona: 'Ana Torres Leiva'});
+    usuarios.push({ nombreUsuario: 'jperez@duocuc.cl', password: '5678', nombrePersona: 'Juan Pérez'});
+    usuarios.push({ nombreUsuario: 'gvega@duocuc.cl', password: '0987', nombrePersona: 'Gustavo Vega'});
+
+    return usuarios;
+  }
+
+  public validarCuentasUsuarios(nombreUsuario: string, password: string): boolean {
+    let respuesta: boolean = false;
+
+    this.getUsuarios().forEach(u => {
+      if (nombreUsuario === u.nombreUsuario && password === u.password) {
+        alert('Saludo Internauta ' +  u.nombrePersona);
+        respuesta = true;
+      }
+    });
+    return respuesta;
+  }
 }
+
+

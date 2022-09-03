@@ -29,6 +29,7 @@ export class LoginPage implements OnInit {
   */
 
   public usuario: Usuario;
+ 
   /*
     Para poder trabajar con Router y poder navegar hacia la página "home", debemos primero pasar como
     parámetro e instanciar un objeto de la clase "Router". Fijarse que el tipo de dato, que se pasa en el constructor
@@ -58,7 +59,12 @@ export class LoginPage implements OnInit {
 
   public ingresar(): void {
 
-    if(!this.validarUsuario(this.usuario)) {
+    let respuesta: boolean = this.usuario.validarCuentasUsuarios(this.usuario.nombreUsuario , this.usuario.password);
+
+    alert(respuesta);
+
+    if(!respuesta) {
+      alert('Error ingrese nuevamente');
       return;
     }
 
@@ -111,3 +117,7 @@ export class LoginPage implements OnInit {
   }
 
 }
+
+
+
+
