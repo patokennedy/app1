@@ -122,7 +122,7 @@ public limpiarFormulario(): void {
     }
 
     // Mostrar un mensaje emergente con los datos de la persona
-    let mensaje = '<br>Usuario: ' + this.usuario.nombreUsuario;
+    let mensaje = '<br>Usuario: ' + this.usuario.correo;
     mensaje += '<br>Nombre: ' + this.persona.nombre;
     mensaje += '<br>Apellido: ' + this.persona.apellido;
     mensaje += '<br>Educación: ' + this.persona.getTextoNivelEducacional();

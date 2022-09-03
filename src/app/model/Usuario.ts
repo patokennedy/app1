@@ -1,13 +1,45 @@
 export class Usuario {
-  public nombreUsuario = '';
+  public correo = '';
   public password = '';
-  public nombrePersona= "";
+  public nombre = '';
+  public preguntaSecreta = '';
+  public respuestaSecreta = '';
 
-  public validarNombreUsuario(): string {
-    if (this.nombreUsuario.trim() === '') {
+  constructor(
+    correo: string,
+    password: string,
+    nombre: string,
+    preguntaSecreta: string,
+    respuestaSecreta: string)
+  {
+    this.correo = correo;
+    this.password = password;
+    this.nombre = nombre;
+    this.preguntaSecreta = preguntaSecreta;
+    this.respuestaSecreta = respuestaSecreta;
+  }
+
+  public listaUsuariosValidos(): Usuario[] {
+    const lista = [];
+    lista.push(new Usuario('atorres@duocuc.cl', '1234', 'Ana Torres Leiva'
+      , '¿Cuál es tu animal favorito?', 'gato'));
+    lista.push(new Usuario('jperez@duocuc.cl', '5678', 'Juan Pérez González'
+      , '¿Cuál es tu postre favorito?', 'panqueques'));
+    lista.push(new Usuario('cmujica@duocuc.cl', '0987', 'Carla Mujica Sáez'
+      , '¿Cuál es tu vehículo favorito?', 'moto'));
+    return lista;
+  }
+
+  public buscarUsuarioValido(correo: string, password: string): Usuario {
+    return this.listaUsuariosValidos().find(
+      usu => usu.correo === correo && usu.password === password);
+  }
+
+  public validarcorreo(): string {
+    if (this.correo.trim() === '') {
       return 'Para ingresar al sistema debe ingresar un nombre de usuario.';
     }
-    if (this.nombreUsuario.length < 3 || this.nombreUsuario.length > 8) {
+    if (this.correo.length < 3 || this.correo.length > 8) {
       return 'El nombre de usuario debe tener entre 3 y 8 caracteres.';
     }
     return '';
@@ -29,29 +61,8 @@ export class Usuario {
   }
 
   public validarUsuario(): string {
-    return this.validarNombreUsuario()
+    return this.validarcorreo()
       || this.validarPassword();
   }
-  public getUsuarios(): Usuario[] {
-    const usuarios = [];
-    usuarios.push({ nombreUsuario: 'atorresl@duocuc.cl', password: '1234', nombrePersona: 'Ana Torres Leiva'});
-    usuarios.push({ nombreUsuario: 'jperez@duocuc.cl', password: '5678', nombrePersona: 'Juan Pérez'});
-    usuarios.push({ nombreUsuario: 'gvega@duocuc.cl', password: '0987', nombrePersona: 'Gustavo Vega'});
-
-    return usuarios;
-  }
-
-  public validarCuentasUsuarios(nombreUsuario: string, password: string): boolean {
-    let respuesta: boolean = false;
-
-    this.getUsuarios().forEach(u => {
-      if (nombreUsuario === u.nombreUsuario && password === u.password) {
-        alert('Saludo Internauta ' +  u.nombrePersona);
-        respuesta = true;
-      }
-    });
-    return respuesta;
-  }
 }
-
 
