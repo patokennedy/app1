@@ -1,6 +1,5 @@
 <!-- Comienza el Header -->
 <ion-header>
-  
   <ion-toolbar color="rgba(255,255,255,0.7)">
     <ion-title #titulo class="ion-text-left ion-text">
       <div>
@@ -33,7 +32,21 @@
   <b class="ion-text-center">
     <p *ngIf="usuario"> {{ usuario.nombre }}</p>
   </b>
+
+  <ion-list>
+    <ion-item *ngFor="let c of componentes" 
+    [routerLink] ="c.redirectTo" detail>
+    <ion-icon slot="start" [name]="c.icon"></ion-icon>
+      <ion-label>{{ c.name }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- <ion-button shape="block" routerLink="/qrreader">
+    Utilizar el Codigo QR
+  </ion-button> -->
+
 </ion-content>
+
   
 
   <!-- <ion-item #itemNombre>

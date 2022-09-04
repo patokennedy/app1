@@ -20,6 +20,14 @@ export class HomePage implements OnInit, AfterViewInit {
   @ViewChild('itemEducacion', { read: ElementRef, static: true}) itemEducacion: ElementRef;
   @ViewChild('itemFechaNacimiento', { read: ElementRef, static: true}) itemFechaNacimiento: ElementRef;
 
+  componentes: Componente[] = [
+    {
+      icon: 'qr-code',
+      name: 'Codigo QR',
+      redirectTo: '/qrreader',
+    }
+  ];
+
   public usuario: Usuario;
 
   public nivelesEducacionales: NivelEducacional[] = new NivelEducacional().getNivelesEducacionales();
@@ -67,6 +75,7 @@ public ngOnInit(): void {
   // this.persona.nivelEducacional.id = 6;
   // this.persona.fechaNacimiento = '1972-12-26';
 }
+
 
 public ngAfterViewInit(): void {
   const animation = this.animationController
@@ -141,4 +150,10 @@ public limpiarFormulario(): void {
 
     await alert.present();
   }
+}
+
+interface Componente {
+  icon: string;
+  name: string;
+  redirectTo: string;
 }
